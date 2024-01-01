@@ -149,24 +149,14 @@ function copy_file(src, dst) {
 
 	if(fs.existsSync(dst)){
 		if(fs.statSync(dst).mtimeMs>=fs.statSync(src).mtimeMs){
-			//console.log("<br>目标文件新于旧文件: "+src);
+			console.log("<br>目标文件新于旧文件: "+src);
+			return;
 		}
-		//return;
+		fs.unlinkSync(dst);
+		
 	}
 
-
-	const srcStream = fs.createReadStream(src); // 创建读取流
-	const dstStream = fs.createWriteStream(dst); // 创建写入流
-	
-	srcStream.pipe(dstStream); // 使用管道将读取流连接到写入流
-	
-	srcStream.on('end', () => {
-		console.log(src+"->"+dst);
-	});
-	
-	srcStream.on('error', (err) => {
-		console.error(src+"->"+dst, err);
-	});
+	fs.copyFileSync(src,dst);
 }
 
 function copy_file_between_vault(path,xvault){
@@ -177,6 +167,7 @@ function copy_file_between_vault(path,xvault){
 }
 
 function copy_publish_vault(xvault){
+	dv.span("Copy to: "+xvault);
 	let files = get_publish_files();
 	let attachments = get_attachments_of_files(files);
 	console.log(files);
@@ -206,11 +197,13 @@ function run(mode){
 	// 将当前 vault 下的公开笔记附件移到 __pulbic__ 下
 	if(mode==3){
 		let xvault = "D:/iLanix/website/notes";
+		
 		copy_publish_vault(xvault);
 	}
 	
 }
 
+console.log(fs);
 run(3);
 //console.log(get_publish_files());
 
