@@ -83,65 +83,7 @@ npx quartz create
 - `URI malformed`：有些
 
 
+[[Quartz 发布 Obsidian_快速添加元数据]]
 
-## 快速添加元数据
-
-在 `__template__` 文件夹下新建文件 `quartz_pulbish`，内容如下：
-
-```md
-
-drafts: false
-publish: true
-```
-
-在  [[Templater]] 设置页面，点击 `Template Hotkeys` 下 `Add new hotkey for tempalte`，输入 `__template__/quartz_pulbish.md` ，为插入发布所需的元数据创建快捷键。
-
-在 [[cMenu]] 设置页面，点击 `cMenu commands` 中的加号按钮，选择 `Templater:Insert__template__/quartz_pulbish.md`，添加 `cMemu` 按钮。
-
-现在，可以通过快捷键或点击图标插入元数据，快速发布笔记。
-
-## 在个人网站上发布
-
-
-年前备案了域名，
-
-
-
-
-```
-git clone https://github.com/jackyzha0/quartz.git
-cd quartz
-npm i
-npx quartz create # 选择 Empty Quartz
-
-rm .git -rf # 删除 git 配置
-
-cd content
-git remote add origin git@github.com:zigholding/notes.git
-git pull origin master
-npx quartz build --serve
-```
-
-
-
-## 发布到 [[GitHub Pages]]
-
-[[GitHub Pages]] 是 GitHub 提供的一项功能，用于托管和发布静态网页。它允许用户将他们的代码仓库转化为在线可访问的网站，并可以通过 GitHub 提供的域名（username.github.io）或自定义域名进行访问。
-
-在 [[GitHub]] 上新建项目 `quartz`，点击 `Setting->Pages`，将 `Build and deployment` 下的 `source` 设置为 `Github Action`。
-
-`cd` 到 `quartz` 目录，将 `github` 地址更改为自己的项目地址。
-
-```
-git remote -v
-git remote remove origin
-git remote remove upstream
-git remote add origin git@github.com:zigholding/quartz.git
-```
-
-[[github 配置SSH]]，运行 `npx quartz sync` 同步。
-
-初化里可能不成功，提示 ` couldn't find remote ref v4`，手动推送 `git push origin v4`。
-
-现在，就可以在 [zigholding.github.io/quartz](https://zigholding.github.io/quartz/) 访问了。
+[[Quartz 发布 Obsidian_在个人网站上发布]]
 
