@@ -100,6 +100,29 @@ publish: true
 
 现在，可以通过快捷键或点击图标插入元数据，快速发布笔记。
 
+## 在个人网站上发布
+
+
+年前备案了域名，
+
+
+
+
+```
+git clone https://github.com/jackyzha0/quartz.git
+cd quartz
+npm i
+npx quartz create # 选择 Empty Quartz
+
+rm .git -rf # 删除 git 配置
+
+cd content
+git remote add origin git@github.com:zigholding/notes.git
+git pull origin master
+npx quartz build --serve
+```
+
+
 
 ## 发布到 [[GitHub Pages]]
 
