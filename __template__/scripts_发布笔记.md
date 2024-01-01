@@ -245,7 +245,7 @@ function recursive_dir(dirPath) {
 				}
 				if(!is_exists(filePath,dst,src)){
 					dv.span("<br>"+filePath);
-					// fs.unlinkSync(filePath);
+					fs.unlinkSync(filePath);
 				}
 			} else if (stats.isDirectory()) {
 				recursive_dir(filePath);
@@ -255,7 +255,7 @@ function recursive_dir(dirPath) {
 	});
 }
 
-let mode = 2;
+let mode = 1;
 let src = vault_api.adapter.basePath;
 	let dst = "D:/iLanix/website/notes";
 if(mode==1){
