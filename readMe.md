@@ -1,8 +1,3 @@
----
-title : Let's ZigHolding!
-publish : true
-drafts : false
----
 
 如果你看出👀 ZigHolding<br>
 是 ⚡知止而后定⚡ 的谐音梗<br>
